@@ -1,24 +1,9 @@
 node_modules
-.DS_Store
 dist
-dist-ssr
-*.local
 .env
 .env.*
 !.env.example
-.nitro
 .tanstack
 .wrangler
-.output
-.vinxi
-__unconfig*
-
-# TypeScript
-*.tsbuildinfo
-
-# Vite
-vite.config.ts.timestamp-*
-.vite/
-
-# pnpm
-.pnpm-store
+*.local
+.DS_Store
