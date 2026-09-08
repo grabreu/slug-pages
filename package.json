@@ -2,18 +2,15 @@
   "name": "slug-pages",
   "private": true,
   "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "generate-routes": "tsr generate",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "biome format",
-    "lint": "biome lint",
+    "deploy": "pnpm run build && wrangler deploy",
+    "generate-routes": "tsr generate",
     "check": "biome check",
-    "deploy": "pnpm run build && wrangler deploy"
+    "format": "biome format",
+    "lint": "biome lint"
   },
   "dependencies": {
     "@tanstack/react-devtools": "^0.10.12",
@@ -35,5 +32,10 @@
     "typescript": "^7.0.2",
     "vite": "^8.2.2",
     "wrangler": "^4.129.1"
+  },
+  "intent": {
+    "skills": [
+      "@tanstack/*"
+    ]
   }
 }

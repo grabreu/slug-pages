@@ -25,6 +25,17 @@ Read `README.md` before making changes — it documents the project pitch.
 - Vertical Slice / feature-folder organization for server-side logic — TODO, only the default file-router scaffold exists so far.
 - Live-preview Markdown editing mechanism — TODO, not decided (CodeMirror 6 + decoration plugin is the current lean, not finalized).
 
+## Skill Loading
+
+Before editing files for a substantial task:
+
+- Run `pnpm dlx @tanstack/intent@latest list` from the repo root to see available local skills.
+- If a listed skill matches the task, run `pnpm dlx @tanstack/intent@latest load <package>#<skill>` before changing files.
+- Use the loaded `SKILL.md` guidance while making the change.
+- Multiple matches: prefer the most specific local skill for the package or concern you are changing; load additional skills only when the task spans multiple packages or concerns.
+
+Enabled skill scope is `@tanstack/*` only (see `intent.skills` in `package.json`).
+
 ## General Rules
 
 - Keep changes scoped to the requested change.
