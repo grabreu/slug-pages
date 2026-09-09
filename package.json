@@ -1,0 +1,45 @@
+{
+  "name": "slug-pages",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "pnpm run build && wrangler deploy",
+    "generate-routes": "tsr generate",
+    "check": "biome check",
+    "format": "biome format",
+    "lint": "biome lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tanstack/react-devtools": "^0.10.12",
+    "@tanstack/react-router": "^1.170.33",
+    "@tanstack/react-router-devtools": "^1.167.1",
+    "@tanstack/react-start": "^1.168.50",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@cloudflare/vite-plugin": "^1.54.5",
+    "@tanstack/devtools-vite": "^0.8.5",
+    "@tanstack/router-cli": "^1.167.34",
+    "@types/node": "^26.5.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "vitest": "^5.0.0",
+    "wrangler": "^4.129.1"
+  },
+  "intent": {
+    "skills": [
+      "@tanstack/*"
+    ]
+  }
+}
