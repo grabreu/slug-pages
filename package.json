@@ -2,6 +2,7 @@
   "name": "slug-pages",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
@@ -10,7 +11,8 @@
     "generate-routes": "tsr generate",
     "check": "biome check",
     "format": "biome format",
-    "lint": "biome lint"
+    "lint": "biome lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@tanstack/react-devtools": "^0.10.12",

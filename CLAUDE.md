@@ -63,8 +63,10 @@ This section should be expanded as real features (the editor, server functions, 
 ## Validation
 
 - `pnpm check` — Biome: format + lint + organize imports.
+- `pnpm typecheck` — `tsc --noEmit`.
 - `pnpm build` — Vite build.
-- Typecheck and automated tests are not set up yet — TODO.
+- Automated tests are not set up yet — TODO.
+- CI (`.github/workflows/ci.yml`) runs `check`, `typecheck`, and `build` on every push/PR to `main`. CD (`.github/workflows/cd.yml`) runs `pnpm run deploy` on push to `main`, needs `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` repo secrets.
 
 ## Git
 
