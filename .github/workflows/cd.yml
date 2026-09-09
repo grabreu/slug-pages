@@ -16,7 +16,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: prod
+    environment:
+      name: prod
+      url: https://slug-pages.grabreu.dev
 
     steps:
       - name: Checkout
