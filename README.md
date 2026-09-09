@@ -8,7 +8,7 @@ Anonymous, no-login scratchpad — navigate to any URL and start typing. Content
 
 Built entirely on Cloudflare's edge with Workers and D1.
 
-**[Try it live →](https://slug-pages.grabreu.workers.dev)**
+**[Try it live →](https://slug-pages.grabreu.dev)**
 
 ## Features
 
