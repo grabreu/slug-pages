@@ -65,8 +65,8 @@ This section should be expanded as real features (the editor, server functions, 
 - `pnpm check` — Biome: format + lint + organize imports.
 - `pnpm typecheck` — `tsc --noEmit`.
 - `pnpm build` — Vite build.
-- Automated tests are not set up yet — TODO.
-- CI (`.github/workflows/ci.yml`) runs `check`, `typecheck`, and `build` on every push/PR to `main`. CD (`.github/workflows/cd.yml`) runs `pnpm run deploy` on push to `main`, needs `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` repo secrets.
+- `pnpm test` — Vitest (`vitest run`, `passWithNoTests: true` — no tests exist yet, add real ones alongside real logic, e.g. server functions). Exported functions with real logic should have a matching `*.test.ts`.
+- CI (`.github/workflows/ci.yml`) runs `check`, `typecheck`, `build`, and `test` on every push/PR to `main`. CD (`.github/workflows/cd.yml`) runs `pnpm run deploy` on push to `main`, using the `prod` GitHub Environment (`CLOUDFLARE_API_TOKEN` as environment secret, `CLOUDFLARE_ACCOUNT_ID` as environment variable).
 
 ## Git
 

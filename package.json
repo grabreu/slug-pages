@@ -12,7 +12,8 @@
     "check": "biome check",
     "format": "biome format",
     "lint": "biome lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tanstack/react-devtools": "^0.10.12",
@@ -33,6 +34,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "typescript": "^7.0.2",
     "vite": "^8.2.2",
+    "vitest": "^5.0.0",
     "wrangler": "^4.129.1"
   },
   "intent": {
