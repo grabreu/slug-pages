@@ -1,3 +1,45 @@
 # slug-pages
 
-Anonymous, no-login scratchpad — navigate to any URL and start typing. Markdown live-preview editor, running 100% on Cloudflare edge (Workers + D1).
+[![CI](https://github.com/grabreu/slug-pages/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/grabreu/slug-pages/actions/workflows/ci.yml)
+[![CD](https://github.com/grabreu/slug-pages/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/grabreu/slug-pages/actions/workflows/cd.yml)
+[![License](https://img.shields.io/github/license/grabreu/slug-pages?style=flat-square)](LICENSE)
+
+Anonymous, no-login scratchpad — navigate to any URL and start typing. Content saves automatically as you pause, with live Markdown rendering.
+
+Built entirely on Cloudflare's edge with Workers and D1.
+
+**[Try it live →](https://slug-pages.grabreu.workers.dev)**
+
+## Features
+
+- **URL as a page** — visit any path and start writing immediately. No login or creation step.
+- **Live Markdown** — content is rendered as formatted Markdown while you type.
+- **Autosave** — changes are persisted automatically after a pause in typing.
+- **Shared by design** — anyone with the URL can read and edit the page. Authentication and ownership are intentionally omitted; see [ADR 0001](docs/adr/0001-no-authentication.md).
+- **Conflict handling** — if the page changed remotely, choose between reloading the latest version or overwriting it with your local changes.
+- **Soft delete** — clearing a page removes its content while keeping the slug available for editing.
+
+See [CONTEXT.md](CONTEXT.md) for the domain vocabulary.
+
+## Inspiration
+
+Inspired by [DontPad](https://dontpad.com)'s URL-as-a-page concept, with a different take on the editing experience and underlying architecture.
+
+## Development
+
+Requires [pnpm](https://pnpm.io).
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Other scripts: `pnpm check` (lint/format), `pnpm typecheck`, `pnpm test`, `pnpm build`.
+
+## Deployment
+
+Auto-deployed to Cloudflare Workers on every merge to `main` via GitHub Actions.
+
+## License
+
+Licensed under the [MIT License](LICENSE).

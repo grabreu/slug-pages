@@ -1,0 +1,3 @@
+# Server functions are the entire backend
+
+There is no separate API layer. TanStack Start's server functions, called directly from route loaders and components, are the whole backend — reading and writing Pages, and any future logic. We chose this over a conventional split (frontend + a separate REST/GraphQL API) to keep the app as a single deployable unit on Cloudflare Workers, with no client/server contract to maintain independently. The trade-off: server functions are colocated with routes, not organized as a standalone service — if this app ever needed to expose the same logic to a different client (a CLI, a mobile app), that would mean carving out a real API at that point, not before.

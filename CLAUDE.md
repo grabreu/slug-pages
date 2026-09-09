@@ -4,16 +4,7 @@
 
 Anonymous, no-login scratchpad — navigate to any URL and start typing. Markdown live-preview editor, running 100% on Cloudflare edge (Workers + D1).
 
-Read `README.md` before making changes — it documents the project pitch.
-
-## Domain
-
-- `Page`: identified by `slug` (URL-safe, immutable, unique — doubles as identity and address). Created implicitly on first visit, no explicit creation step.
-- `content`: raw Markdown text.
-- `updatedAt`: last-write timestamp, used as the optimistic-concurrency token.
-- No authentication, no ownership — anyone with the slug can read and write. This is intentional, not a gap to fix.
-- "Deleting" a page means clearing `content` to empty; the row and slug persist.
-- A write is rejected as a conflict if the server's `updatedAt` has advanced past what the client last loaded; the client is offered discard-and-reload or overwrite.
+Read `README.md` before making changes — it documents the project pitch and the domain's business rules. Read `CONTEXT.md` for the domain vocabulary. Significant, hard-to-reverse decisions are recorded in `docs/adr/` — check it before revisiting one, and add an entry when making a new one (see the `domain-modeling` skill for the format).
 
 ## Stack
 
