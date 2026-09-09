@@ -3,9 +3,15 @@ import { db } from "~/db/client";
 import { pages } from "~/db/schema";
 
 export const getPage = async (slug: string) => {
-  return await db.query.pages.findFirst({
+  const page = await db.query.pages.findFirst({
     where: eq(pages.slug, slug),
   });
+
+  if (!page) {
+    return { slug, content: "", updatedAt: null };
+  }
+
+  return page;
 };
 
 export const savePage = async (slug: string, content: string) => {
