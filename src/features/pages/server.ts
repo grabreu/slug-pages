@@ -6,11 +6,9 @@ export const getPage = async (slug: string) => {
   const page = await db.query.pages.findFirst({
     where: eq(pages.slug, slug),
   });
-
   if (!page) {
     return { slug, content: "", updatedAt: null };
   }
-
   return page;
 };
 
@@ -26,6 +24,5 @@ export const savePage = async (slug: string, content: string) => {
       },
     })
     .returning();
-
   return row;
 };
