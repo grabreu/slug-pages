@@ -31,10 +31,13 @@ Requires [pnpm](https://pnpm.io).
 
 ```bash
 pnpm install
+pnpm db:migrate:local
 pnpm dev
 ```
 
-Other scripts: `pnpm check` (lint/format), `pnpm typecheck`, `pnpm test`, `pnpm build`.
+`pnpm db:migrate:local` applies the Drizzle migrations to the local D1 database (a SQLite file emulated by Wrangler, not the production database).
+
+Other scripts: `pnpm check` (lint/format), `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm db:generate` (new migration from schema changes), `pnpm db:migrate:remote` (apply migrations to production D1).
 
 ## Deployment
 

@@ -3,5 +3,13 @@
   "name": "slug-pages",
   "compatibility_date": "2025-09-02",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry"
+  "main": "@tanstack/react-start/server-entry",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "slug-pages-db",
+      "database_id": "98df42bd-a2de-496c-ae15-0cea34572dc3",
+      "migrations_dir": "drizzle"
+    }
+  ]
 }
