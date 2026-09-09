@@ -1,14 +1,36 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { type SubmitEvent, useState } from "react";
 
-export const Route = createFileRoute("/")({ component: Home });
+const RouteComponent = () => {
+  const navigate = useNavigate();
+  const [slug, setSlug] = useState("");
 
-function Home() {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmed = slug.trim();
+    if (trimmed) {
+      navigate({ to: `/${trimmed}` });
+    }
+  };
+
   return (
-    <div>
-      <h1>Welcome to TanStack Start</h1>
-      <p>
-        Edit <code>src/routes/index.tsx</code> to get started.
-      </p>
-    </div>
+    <main className="landing">
+      <form className="landing-bar" onSubmit={handleSubmit}>
+        <span className="landing-bar-domain">slug-pages.grabreu.dev/</span>
+        <input
+          className="landing-bar-input"
+          type="text"
+          value={slug}
+          onChange={(event) => setSlug(event.target.value)}
+          placeholder="anything"
+          aria-label="Page name"
+        />
+      </form>
+      <p className="landing-hint">or just type it in the address bar</p>
+    </main>
   );
-}
+};
+
+export const Route = createFileRoute("/")({
+  component: RouteComponent,
+});
