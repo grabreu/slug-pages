@@ -1,3 +1,4 @@
+import { Markdown } from "@tanstack/markdown/react";
 import { useAsyncDebouncer } from "@tanstack/react-pacer";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
@@ -28,11 +29,17 @@ const RouteComponent = () => {
   };
 
   return (
-    <textarea
-      value={content}
-      onChange={(e) => handleChange(e.target.value)}
-      maxLength={MAX_CONTENT_LENGTH}
-    />
+    <div className="editor">
+      <textarea
+        className="editor-input"
+        value={content}
+        onChange={(e) => handleChange(e.target.value)}
+        maxLength={MAX_CONTENT_LENGTH}
+      />
+      <div className="editor-preview">
+        <Markdown>{content}</Markdown>
+      </div>
+    </div>
   );
 };
 
