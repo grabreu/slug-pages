@@ -12,7 +12,7 @@ Read `README.md` before making changes — it documents the project pitch and th
 - pnpm.
 - Data layer: Cloudflare D1 + Drizzle ORM. Schema, client, and the first feature slice (`src/features/pages/`) are wired up.
 - Vertical Slice / feature-folder organization for server-side logic: `src/features/<name>/{schemas,server,functions}.ts`.
-- Live-preview Markdown editing mechanism — TODO, not decided (CodeMirror 6 + decoration plugin is the current lean, not finalized).
+- Markdown preview: split-pane (raw textarea + rendered preview via `@tanstack/markdown/react`, currently alpha). No syntax highlighting or in-place decoration.
 
 ## Skill Loading
 
