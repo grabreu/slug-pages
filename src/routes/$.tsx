@@ -3,6 +3,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { getPageFn, savePageFn } from "~/features/pages/functions";
+import { MAX_CONTENT_LENGTH } from "~/features/pages/schemas";
 
 const AUTOSAVE_DELAY_MS = 800;
 
@@ -22,7 +23,11 @@ const RouteComponent = () => {
   };
 
   return (
-    <textarea value={content} onChange={(e) => handleChange(e.target.value)} />
+    <textarea
+      value={content}
+      onChange={(e) => handleChange(e.target.value)}
+      maxLength={MAX_CONTENT_LENGTH}
+    />
   );
 };
 
