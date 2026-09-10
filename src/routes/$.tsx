@@ -1,4 +1,4 @@
-import { useAsyncDebouncedCallback } from "@tanstack/react-pacer";
+import { useAsyncDebouncer } from "@tanstack/react-pacer";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
@@ -12,14 +12,19 @@ const RouteComponent = () => {
   const savePage = useServerFn(savePageFn);
   const [content, setContent] = useState(page.content);
 
-  const debouncedSave = useAsyncDebouncedCallback(
+  const debouncer = useAsyncDebouncer(
     (value: string) => savePage({ data: { slug: page.slug, content: value } }),
-    { wait: AUTOSAVE_DELAY_MS },
+    {
+      wait: AUTOSAVE_DELAY_MS,
+      onUnmount: (d) => {
+        d.flush();
+      },
+    },
   );
 
   const handleChange = (value: string) => {
     setContent(value);
-    debouncedSave(value);
+    debouncer.maybeExecute(value);
   };
 
   return (
