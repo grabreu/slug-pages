@@ -2,7 +2,7 @@ import { Markdown } from "@tanstack/markdown/react";
 import { useAsyncDebouncer } from "@tanstack/react-pacer";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { getPageFn, savePageFn } from "~/features/pages/functions";
 import { MAX_CONTENT_LENGTH } from "~/features/pages/schemas";
 
@@ -12,9 +12,44 @@ const RouteComponent = () => {
   const { page } = Route.useLoaderData();
   const savePage = useServerFn(savePageFn);
   const [content, setContent] = useState(page.content);
+  const expectedUpdatedAtRef = useRef(page.updatedAt);
 
   const debouncer = useAsyncDebouncer(
-    (value: string) => savePage({ data: { slug: page.slug, content: value } }),
+    async (value: string) => {
+      const result = await savePage({
+        data: {
+          slug: page.slug,
+          content: value,
+          expectedUpdatedAt: expectedUpdatedAtRef.current,
+        },
+      });
+
+      if (result.ok) {
+        expectedUpdatedAtRef.current = result.updatedAt;
+        return;
+      }
+
+      const keepMine = window.confirm(
+        "This page changed elsewhere since you started editing. OK to keep your version (overwrite), Cancel to load the latest version instead.",
+      );
+
+      if (keepMine) {
+        const forced = await savePage({
+          data: {
+            slug: page.slug,
+            content: value,
+            expectedUpdatedAt: null,
+            force: true,
+          },
+        });
+        if (forced.ok) {
+          expectedUpdatedAtRef.current = forced.updatedAt;
+        }
+      } else {
+        setContent(result.current.content);
+        expectedUpdatedAtRef.current = result.current.updatedAt;
+      }
+    },
     {
       wait: AUTOSAVE_DELAY_MS,
       onUnmount: (d) => {
