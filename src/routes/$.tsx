@@ -125,9 +125,7 @@ export const Route = createFileRoute("/$")({
   head: ({ loaderData }) => ({
     meta: [
       {
-        title: loaderData
-          ? `${loaderData.page.slug} - Slug Pages`
-          : "Slug Pages",
+        title: loaderData ? `${loaderData.page.slug} - Slug Pages` : undefined,
       },
     ],
   }),
