@@ -1,0 +1,3 @@
+# Markdown preview is a split-pane, not a decorated editor
+
+Rendering Markdown could mean two different things: a single editor where raw syntax turns into formatted text in place as you type (e.g. a CodeMirror 6 setup with a decoration plugin), or a plain textarea next to a separately rendered preview pane. We chose the split-pane, using `@tanstack/markdown/react` for the preview. A decorated single-pane editor is a much larger investment (custom decorations, incremental parsing tied to cursor position) that this product's scope — a quick-notes scratchpad where Markdown is an optional extra, not the headline feature — doesn't justify. The trade-off: `@tanstack/markdown` is alpha (v0.0.x) as of this decision, so its API may still change.

@@ -5,7 +5,7 @@ Anonymous, no-login scratchpad — navigate to any URL and start typing.
 ## Language
 
 **Page**:
-A public, anonymous note identified by its `slug`. Created implicitly the first time its slug is visited.
+A public, anonymous note identified by its `slug`. Visiting an unused slug shows an empty, editable Page; the row is only created implicitly on the first save.
 _Avoid_: Document, Note, Post
 
 **Slug**:
