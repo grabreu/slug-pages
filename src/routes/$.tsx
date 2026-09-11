@@ -4,16 +4,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useRef, useState } from "react";
 import { getPageFn, savePageFn } from "~/features/pages/functions";
-import { MAX_CONTENT_LENGTH } from "~/features/pages/schemas";
-
-const AUTOSAVE_DELAY_MS = 800;
-const REPO_URL = "https://github.com/grabreu/slug-pages";
 
 const RouteComponent = () => {
   const { page } = Route.useLoaderData();
-  const savePage = useServerFn(savePageFn);
   const [content, setContent] = useState(page.content);
-  const [showPreview, setShowPreview] = useState(true);
+  const [showPreview, setShowPreview] = useState(false);
+  const savePage = useServerFn(savePageFn);
   const expectedUpdatedAtRef = useRef(page.updatedAt);
 
   const debouncer = useAsyncDebouncer(
@@ -53,7 +49,7 @@ const RouteComponent = () => {
       }
     },
     {
-      wait: AUTOSAVE_DELAY_MS,
+      wait: 800,
       onUnmount: (d) => {
         d.flush();
       },
@@ -76,12 +72,13 @@ const RouteComponent = () => {
             type="checkbox"
             checked={showPreview}
             onChange={(e) => setShowPreview(e.target.checked)}
+            autoComplete="off"
           />
           Markdown Preview
         </label>
         <a
           className="appbar-github"
-          href={REPO_URL}
+          href="https://github.com/grabreu/slug-pages"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -102,7 +99,7 @@ const RouteComponent = () => {
           className="editor-input"
           value={content}
           onChange={(e) => handleChange(e.target.value)}
-          maxLength={MAX_CONTENT_LENGTH}
+          maxLength={100_000}
         />
         {showPreview && (
           <div className="editor-preview">
