@@ -35,7 +35,7 @@
     "@biomejs/biome": "2.5.12",
     "@cloudflare/vite-plugin": "^1.54.5",
     "@tanstack/devtools-vite": "^0.8.5",
-    "@tanstack/router-cli": "^1.167.34",
+    "@tanstack/router-cli": "^1.167.36",
     "@types/node": "^26.5.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
