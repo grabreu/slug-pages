@@ -10,6 +10,10 @@ Built entirely on Cloudflare's edge with Workers and D1.
 
 **[Try it live →](https://slug-pages.grabreu.dev)**
 
+## Tech stack
+
+TanStack Start (SSR, React 19) · Cloudflare Workers + D1 · Drizzle ORM · Vite · Biome · pnpm
+
 ## Features
 
 - **URL as a page** — visit any path and start writing immediately. No login or creation step.
@@ -19,7 +23,7 @@ Built entirely on Cloudflare's edge with Workers and D1.
 - **Soft delete** — clearing a page removes its content while keeping the slug available for editing.
 - **Markdown, if you want it** — a side-by-side preview renders the page's content as Markdown; plain text works too.
 
-See [CONTEXT.md](CONTEXT.md) for the domain vocabulary.
+See [docs/architecture.md](docs/architecture.md) for the domain model and request flow, and [docs/adr/](docs/adr/) for the reasoning behind these decisions.
 
 ## Inspiration
 
@@ -41,7 +45,7 @@ Other scripts: `pnpm check` (lint/format), `pnpm typecheck`, `pnpm test`, `pnpm 
 
 ## Deployment
 
-Auto-deployed to Cloudflare Workers on every merge to `main` via GitHub Actions.
+Auto-deployed to Cloudflare Workers + D1 on every merge to `main` via GitHub Actions, authenticated with a Cloudflare API token scoped to the account and stored as a repo secret. D1 migrations (`pnpm run db:migrate:remote`) apply before the deploy step, against the database declared in `wrangler.jsonc` — no Terraform or Bicep.
 
 ## License
 
