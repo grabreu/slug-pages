@@ -32,7 +32,7 @@
     "zod": "^4.5.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@cloudflare/vite-plugin": "^1.54.5",
     "@tanstack/devtools-vite": "^0.8.5",
     "@tanstack/router-cli": "^1.167.36",
