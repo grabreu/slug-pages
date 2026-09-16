@@ -17,11 +17,11 @@ Read `README.md` before making changes — it documents the project pitch and th
 
 ## Git
 
-- Do not create or switch branches unless explicitly requested by the user.
-- Do not create commits unless explicitly requested by the user.
-- Do not push changes unless explicitly requested by the user.
+- Do not create or switch branches unless explicitly requested.
+- Do not create commits unless explicitly requested.
+- Do not push unless explicitly requested.
 - Keep commits focused on the requested change.
-- Commit message format: `type: summary` ([Conventional Commits](https://www.conventionalcommits.org/)), e.g. `feat: add slug route`.
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (`type: summary`).
 
 ## Documentation
 
