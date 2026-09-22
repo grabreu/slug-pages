@@ -25,7 +25,7 @@
     "@tanstack/react-pacer-devtools": "^0.8.0",
     "@tanstack/react-router": "^1.170.35",
     "@tanstack/react-router-devtools": "^1.167.1",
-    "@tanstack/react-start": "^1.168.50",
+    "@tanstack/react-start": "^1.168.56",
     "drizzle-orm": "^0.45.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
