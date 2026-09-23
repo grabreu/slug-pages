@@ -2,8 +2,10 @@ import { Markdown } from "@tanstack/markdown/react";
 import { useAsyncDebouncer } from "@tanstack/react-pacer";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getPageFn, savePageFn } from "~/features/pages/functions";
+
+const previewStorageKey = (slug: string) => `slug-pages:preview:${slug}`;
 
 const RouteComponent = () => {
   const { page } = Route.useLoaderData();
@@ -11,6 +13,18 @@ const RouteComponent = () => {
   const [showPreview, setShowPreview] = useState(false);
   const savePage = useServerFn(savePageFn);
   const expectedUpdatedAtRef = useRef(page.updatedAt);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(previewStorageKey(page.slug));
+    if (stored !== null) {
+      setShowPreview(stored === "true");
+    }
+  }, [page.slug]);
+
+  const handleTogglePreview = (checked: boolean) => {
+    setShowPreview(checked);
+    window.localStorage.setItem(previewStorageKey(page.slug), String(checked));
+  };
 
   const debouncer = useAsyncDebouncer(
     async (value: string) => {
@@ -71,7 +85,7 @@ const RouteComponent = () => {
           <input
             type="checkbox"
             checked={showPreview}
-            onChange={(e) => setShowPreview(e.target.checked)}
+            onChange={(e) => handleTogglePreview(e.target.checked)}
             autoComplete="off"
           />
           Markdown Preview
