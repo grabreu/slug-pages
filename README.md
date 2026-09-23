@@ -4,7 +4,7 @@
 [![CD](https://github.com/grabreu/slug-pages/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/grabreu/slug-pages/actions/workflows/cd.yml)
 [![License](https://img.shields.io/github/license/grabreu/slug-pages?style=flat-square)](LICENSE)
 
-Anonymous, no-login scratchpad — visit any URL and start typing. Notes save automatically as you type; Markdown is supported if you want it.
+Anonymous, no-login scratchpad: visit any URL and start typing. Notes save automatically as you type; Markdown is supported if you want it.
 
 Built entirely on Cloudflare's edge with Workers and D1.
 
@@ -16,12 +16,12 @@ TanStack Start (SSR, React 19) · Cloudflare Workers + D1 · Drizzle ORM · Vite
 
 ## Features
 
-- **URL as a page** — visit any path and start writing immediately. No login or creation step.
-- **Autosave** — changes are persisted automatically after a pause in typing.
-- **Shared by design** — anyone with the URL can read and edit the page. Authentication and ownership are intentionally omitted; see [ADR 0001](docs/adr/0001-no-authentication.md).
-- **Conflict handling** — if the page changed remotely, choose between reloading the latest version or overwriting it with your local changes.
-- **Soft delete** — clearing a page removes its content while keeping the slug available for editing.
-- **Markdown, if you want it** — a side-by-side preview renders the page's content as Markdown; plain text works too.
+- **URL as a page**: visit any path and start writing immediately. No login or creation step.
+- **Autosave**: changes are persisted automatically after a pause in typing.
+- **Shared by design**: anyone with the URL can read and edit the page. Authentication and ownership are intentionally omitted; see [ADR 0001](docs/adr/0001-no-authentication.md).
+- **Conflict handling**: if the page changed remotely, choose between reloading the latest version or overwriting it with your local changes.
+- **Soft delete**: clearing a page removes its content while keeping the slug available for editing.
+- **Markdown, if you want it**: a side-by-side preview renders the page's content as Markdown; plain text works too.
 
 See [docs/architecture.md](docs/architecture.md) for the domain model and request flow, and [docs/adr/](docs/adr/) for the reasoning behind these decisions.
 
@@ -45,7 +45,7 @@ Other scripts: `pnpm check` (lint/format), `pnpm typecheck`, `pnpm test`, `pnpm 
 
 ## Deployment
 
-Auto-deployed to Cloudflare Workers + D1 on every merge to `main` via GitHub Actions, authenticated with a Cloudflare API token scoped to the account and stored as a repo secret. D1 migrations (`pnpm run db:migrate:remote`) apply before the deploy step, against the database declared in `wrangler.jsonc` — no Terraform or Bicep.
+Auto-deployed to Cloudflare Workers + D1 on every merge to `main` via GitHub Actions, authenticated with a Cloudflare API token scoped to the account and stored as a repo secret. D1 migrations (`pnpm run db:migrate:remote`) apply before the deploy step, against the database declared in `wrangler.jsonc`; no Terraform or Bicep.
 
 ## License
 
