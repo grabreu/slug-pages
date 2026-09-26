@@ -53,6 +53,7 @@ export const Route = createRootRoute({
         title: "Slug Pages",
         description:
           "Anonymous, no-login scratchpad: visit any URL and start typing. Notes save automatically as you type; Markdown is supported if you want it.",
+        image: "https://slug-pages.grabreu.dev/social-preview.png",
       }),
     ],
     links: [
